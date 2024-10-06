@@ -1,3 +1,4 @@
+import Menu from "@/components/menu/Menu";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -33,6 +34,10 @@ export default function RootLayout({
           "antialiased h-screen, w-screen"
         )}
       >
+        <div className="border-b-2 border-gray-600/25">
+          <Menu />
+        </div>
+
         {children}
       </body>
     </html>
