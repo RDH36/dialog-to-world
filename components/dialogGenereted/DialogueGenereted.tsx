@@ -1,22 +1,22 @@
-import { DialogueMessage } from "@/app/page";
+"use client";
+
 import { cn } from "@/lib/utils";
+import { useDialogStore } from "@/store/dialog.store";
+import { useEffect } from "react";
 import CopyButton from "../copyButton/CopyButton";
 
-type DialogueGeneretedProps = {
-  dialogue: DialogueMessage[];
-};
-
-export default function DialogueGenereted({
-  dialogue,
-}: DialogueGeneretedProps) {
+export default function DialogueGenereted({}) {
+  const { dialogue, setDialogue } = useDialogStore();
+  useEffect(() => {
+    setDialogue(JSON.parse(localStorage.getItem("dialogue") as string));
+  }, [setDialogue]);
   const textToCopy = dialogue
     .map((dialog) => `${dialog.personnage}: ${dialog.message}`)
     .join("\n");
-
   return (
     <div
       className={cn(
-        "w-full lg:w-[600px] flex flex-col gap-1 p-3 border border-gray-500/30 bg-gray-500/10 rounded-sm my-4",
+        "w-full lg:w-[750px] flex flex-col gap-1 p-3 border border-gray-500/30 bg-gray-500/10 rounded-sm my-4",
         dialogue.length === 0 && "hidden"
       )}
     >
