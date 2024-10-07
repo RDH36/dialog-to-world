@@ -27,14 +27,18 @@ export const generateDialog = async (prompt: string) => {
   return response.choices[0].message.content;
 };
 
-export const generateDialogByMistral = async (prompt: string) => {
+export const generateDialogByMistral = async (
+  prompt: string,
+  model: string,
+  language: string
+) => {
   const response = await client.chat.complete({
-    model: "mistral-large-latest",
+    model: model,
     messages: [
       {
         role: "system",
         content: `You are a screenwriter who writes a long dialogue between two people. 
-        dialog is about ${prompt} ,
+        dialog is about ${prompt} and the language is ${language},
         generate the content in JSON format. 
         follow this interface : interface DialogueMessage {personnage: string;message: string;}`,
       },

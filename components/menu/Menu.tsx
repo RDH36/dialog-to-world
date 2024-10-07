@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth/auth";
 import LoginButton from "@/pages/api/auth/LoginButton";
 import { CircleHelp, MessageCircleMore } from "lucide-react";
+import Link from "next/link";
 import User from "../user/User";
 
 export default async function Menu() {
@@ -9,7 +10,9 @@ export default async function Menu() {
     <div className="max-w-6xl m-auto py-2 px-4 flex items-center">
       <div className="flex gap-1 items-center">
         <div className="border border-primary p-1 rounded-lg">
-          <MessageCircleMore width={20} height={20} />
+          <Link href="/">
+            <MessageCircleMore width={20} height={20} />
+          </Link>
         </div>
         <p className="text-sm hidden lg:block">Yours generations</p>
         <p className="hover:underline text-xs text-muted-foreground ml-2 mt- hidden lg:block">
