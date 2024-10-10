@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import LogOutButton from "@/pages/api/auth/LogOutButton";
 import { Wallet } from "lucide-react";
+import Image from "next/image";
 
 type UserProps = {
   id: string;
@@ -22,9 +23,15 @@ export default function User({ name, image }: UserProps) {
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none focus:ring focus:ring-primary/10">
         <div className="flex gap-2 items-center border border-gray-500/50 rounded-md p-1 px-2">
-          <p className="text-xs text-white font-bold">{name}</p>
+          <p className="text-sm text-white">{name}</p>
           <Avatar className="w-6 h-6">
-            <AvatarImage src={image!} />
+            <Image
+              src={image!}
+              width={64}
+              height={64}
+              alt={name!}
+              className="rounded-full"
+            />
             <AvatarFallback className="text-xs">
               {name?.split(" ")[0].charAt(0).toLocaleUpperCase()}
               {name?.split(" ")[1].charAt(0).toLocaleUpperCase()}

@@ -69,9 +69,11 @@ export function FormToGenerate() {
       );
       const jsonMatch = dialog?.match(/```json\s*([\s\S]*?)\s*```/);
       const jsonString = jsonMatch ? jsonMatch[1] : null;
+      const creator = JSON.stringify({ ...values });
       if (jsonString) {
         const arrayDialogue = JSON.parse(jsonString);
         localStorage.setItem("dialogue", jsonString);
+        localStorage.setItem("creator", creator);
         addDialogue(arrayDialogue);
       }
       setLoading(false);
@@ -97,7 +99,7 @@ export function FormToGenerate() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="flex gap-1">
-                    <p>Model AI</p> <CircleHelp width={14} height={14} />
+                    <p>AI Model</p> <CircleHelp width={14} height={14} />
                   </FormLabel>
                   <Select {...field} onValueChange={field.onChange}>
                     <SelectTrigger className="w-[180px] hover:bg-accent-foreground/15 focus:ring-0">
@@ -108,10 +110,10 @@ export function FormToGenerate() {
                         Mistral large latest
                       </SelectItem>
                       <SelectItem disabled value="GPT-3">
-                        GPT-3 (comming soon)
+                        GPT-3 (coming soon)
                       </SelectItem>
                       <SelectItem disabled value="GPT-4">
-                        GPT-4 (comming soon)
+                        GPT-4 (coming soon)
                       </SelectItem>
                     </SelectContent>
                   </Select>

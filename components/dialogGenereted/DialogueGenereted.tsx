@@ -2,10 +2,16 @@
 
 import { cn } from "@/lib/utils";
 import { useDialogStore } from "@/store/dialog.store";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import CopyButton from "../copyButton/CopyButton";
 
-export default function DialogueGenereted({}) {
+type DialogueGeneretedProps = {
+  saveButton?: React.ReactNode;
+};
+
+export default function DialogueGenereted({
+  saveButton,
+}: DialogueGeneretedProps) {
   const { dialogue, setDialogue } = useDialogStore();
   useEffect(() => {
     setDialogue(JSON.parse(localStorage.getItem("dialogue") as string));
@@ -20,14 +26,15 @@ export default function DialogueGenereted({}) {
         dialogue.length === 0 && "hidden"
       )}
     >
-      <div className="flex justify-end">
+      <div className="flex gap-2 justify-end">
         <CopyButton textToCopy={textToCopy} />
+        {saveButton}
       </div>
       {dialogue?.map((dialog, index) => (
         <div key={index} className="mt-4">
           <p className="text-white">
             <span className="font-bold">{dialog.personnage}:</span>{" "}
-            <span className="font-extralight">{dialog.message}</span>
+            <span className="font-thin text-sm">{dialog.message}</span>
           </p>
         </div>
       ))}

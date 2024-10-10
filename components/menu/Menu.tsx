@@ -14,7 +14,7 @@ export default async function Menu() {
             <MessageCircleMore width={20} height={20} />
           </Link>
         </div>
-        <p className="text-sm hidden lg:block">Yours generations</p>
+        <p className="text-sm hidden lg:block">Yours dialogues</p>
         <p className="hover:underline text-xs text-muted-foreground ml-2 mt- hidden lg:block">
           Legacy
         </p>
