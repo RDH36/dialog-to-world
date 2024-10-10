@@ -15,6 +15,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  dialogs       Dialog[]
 }
 
 model Account {
@@ -53,3 +54,14 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model Dialog {
+  id           String   @id @default(cuid())
+  userId       String
+  title        String
+  iAModel      String
+  content      String
+  language     String
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

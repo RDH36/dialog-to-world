@@ -1,6 +1,7 @@
 "use server";
 import { Mistral } from "@mistralai/mistralai";
 import { OpenAI } from "openai";
+import prisma from "../prisma/prisma";
 
 const openAiKey = process.env.OPENAI_API_KEY;
 const apiKey = process.env.MISTRAL_API_KEY;
@@ -46,4 +47,29 @@ export const generateDialogByMistral = async (
   });
 
   return response?.choices?.[0].message.content;
+};
+
+export const saveDialog = async (
+  userId: string,
+  title: string,
+  iAModel: string,
+  language: string,
+  content: string
+) => {
+  console.log("helo");
+  const dialog = await prisma.dialog.create({
+    data: {
+      title,
+      iAModel,
+      content,
+      language,
+      user: {
+        connect: {
+          id: userId,
+        },
+      },
+    },
+  });
+
+  return dialog;
 };
