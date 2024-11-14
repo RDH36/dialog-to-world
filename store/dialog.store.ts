@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
-export interface DialogueMessage {
+export type DialogueMessage = {
   personnage: string;
   message: string;
-}
+};
 
 type dialogueStore = {
   dialogue: DialogueMessage[];

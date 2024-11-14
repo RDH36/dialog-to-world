@@ -58,10 +58,20 @@ model Dialog {
   id           String   @id @default(cuid())
   userId       String
   title        String
-  iAModel      String
   content      String
   language     String
+  vocabulary   String
+  level        Level
   createdAt    DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum Level {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
 }
