@@ -6,8 +6,12 @@ export const getAuthSession = () => {
 };
 
 export const requireAuth = async () => {
-  const session = await getAuthSession();
-  if (session?.user) {
-    return session.user;
+  try {
+    const session = await getAuthSession();
+    if (session?.user) {
+      return session.user;
+    }
+  } catch (error) {
+    throw new Error("need to be authenticated");
   }
 };

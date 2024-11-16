@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 export default async function Home() {
   const session = await getAuthSession();
   if (session?.user) {
-    redirect("/dashboard");
+    redirect("/dashboard/create");
   }
   return (
     <div className="h-full w-full flex flex-col ">

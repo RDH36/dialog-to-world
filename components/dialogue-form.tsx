@@ -27,11 +27,13 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { DialogueGenerationLoading } from "./dialogue-generation-loading";
 
 export function DialogueForm() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof dialogueInputSchema>>({
     resolver: zodResolver(dialogueInputSchema),
     defaultValues: {
@@ -55,6 +57,9 @@ export function DialogueForm() {
       }
       const json = await result.json();
       return json;
+    },
+    onSuccess: (data) => {
+      router.push(`/dashboard/dialogue/${data.dialog.id}`);
     },
   });
 
