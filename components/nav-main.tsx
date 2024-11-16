@@ -39,7 +39,6 @@ export function NavMain({
   }[];
 }) {
   const path = usePathname();
-  console.log(path);
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>

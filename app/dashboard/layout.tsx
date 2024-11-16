@@ -4,9 +4,9 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { UnauthorizedPage } from "@/components/unauthorized-page";
 import { requireAuth } from "@/lib/auth/auth";
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "DW Dashboard",
@@ -18,19 +18,20 @@ export default async function DashBoardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await requireAuth();
-  if (!session) {
-    return redirect("/");
+  const user = await requireAuth();
+
+  if (!user) {
+    return <UnauthorizedPage />;
   }
 
-  const user = {
-    name: session.name!,
-    email: session.email!,
-    avatar: session.image!,
+  const userProps = {
+    name: user.name!,
+    email: user.email!,
+    avatar: user.image!,
   };
   return (
     <SidebarProvider>
-      <AppSidebar {...user} />
+      <AppSidebar {...userProps} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2">
           <div className="flex items-center gap-2 px-4">

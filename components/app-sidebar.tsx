@@ -23,30 +23,16 @@ import {
 const data = {
   navMain: [
     {
-      title: "Create Dialog",
-      url: "/dashboard",
-      path: "/dashboard",
+      title: "Create",
+      url: "/dashboard/create",
+      path: "/create",
       icon: Sparkles,
       isActive: false,
-      // items: [
-      //   {
-      //     title: "History",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Starred",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Settings",
-      //     url: "#",
-      //   },
-      // ],
     },
     {
-      title: "All Dialogs",
-      url: "#",
-      path: "/dialogs",
+      title: "Dialogues",
+      url: "/dashboard/dialogue",
+      path: "/dialogue",
       icon: MessageSquare,
     },
     {

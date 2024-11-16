@@ -44,3 +44,5 @@ export const dialogueInputSchema = z.object({
 });
 
 export type DialogueInput = z.infer<typeof dialogueInputSchema>;
+export type Dialogue = z.infer<typeof dialogueSchema>;
+export type Vocabulary = z.infer<typeof vocabularySchema>;

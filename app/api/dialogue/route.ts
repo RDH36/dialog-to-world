@@ -1,11 +1,16 @@
+import { requireAuth } from "@/lib/auth/auth";
+import prisma from "@/lib/prisma/prisma";
 import { NextResponse } from "next/server";
-import { DialogueInput } from "./dialog.schema";
+import { dialogueInputSchema } from "./dialog.schema";
 import { generateDialog } from "./generate-dilaogue";
 import { generateTitle } from "./generate-title";
 import { generateVocabulary } from "./generate-vocabulaire";
+import { formattedTitle } from "./id-title-unique";
 
 export async function POST(req: Request) {
-  const body: DialogueInput = await req.json();
+  const response = await req.json();
+  const user = await requireAuth();
+  const body = dialogueInputSchema.parse(response);
 
   const dialogue = await generateDialog({ ...body });
   const dialogString = JSON.stringify(dialogue);
@@ -18,9 +23,41 @@ export async function POST(req: Request) {
     dialogue: dialogString,
   });
 
-  console.log(dialogue);
-  console.log(vocabulary);
-  console.log(title);
+  if (!dialogue || !vocabulary || !title) {
+    return NextResponse.json({ error: "Error generation" }, { status: 500 });
+  }
 
-  return NextResponse.json("ok");
+  if (!user) {
+    return NextResponse.json({ error: "Not authorized" }, { status: 401 });
+  }
+
+  const dialog = await prisma.dialog.create({
+    data: {
+      id: formattedTitle(title),
+      title: title,
+      content: JSON.stringify(dialogue),
+      vocabulary: JSON.stringify(vocabulary),
+      level: body.level,
+      language: body.language,
+      user: {
+        connect: {
+          id: user.id,
+        },
+      },
+    },
+  });
+
+  if (!dialog) {
+    return NextResponse.json(
+      { error: "dialogue can't saved" },
+      { status: 500 }
+    );
+  }
+
+  return NextResponse.json(
+    {
+      dialog,
+    },
+    { status: 200 }
+  );
 }
