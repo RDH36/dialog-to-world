@@ -1,7 +1,8 @@
 "use client";
 import { Loader2, RocketIcon } from "lucide-react";
-import { signIn } from "next-auth/react";
+
 import { useState } from "react";
+import { signInAuth } from "./auth.action";
 
 export default function GetStarted() {
   const [isPending, setIsPending] = useState(false);
@@ -10,7 +11,7 @@ export default function GetStarted() {
       className="px-8 py-3 text-base font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors inline-flex items-center justify-center"
       onClick={async () => {
         setIsPending(true);
-        await signIn();
+        await signInAuth();
         setIsPending(false);
       }}
     >

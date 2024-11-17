@@ -1,12 +1,7 @@
-import { authConfig } from "@/pages/api/auth/[...nextauth]";
-import { getServerSession } from "next-auth";
-
-export const getAuthSession = () => {
-  return getServerSession(authConfig);
-};
+import { auth } from "@/auth";
 
 export const requireAuth = async () => {
-  const session = await getAuthSession();
+  const session = await auth();
   if (session?.user) {
     return session.user;
   }
