@@ -216,6 +216,11 @@ export function DialogueForm() {
             </Button>
           </form>
         </Form>
+        {dialogMutation.isError && (
+          <div className="mt-4 text-red-500 text-sm">
+            {dialogMutation.error.message}
+          </div>
+        )}
       </div>
     </>
   );
