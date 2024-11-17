@@ -11,7 +11,6 @@ export default function HeroBanner() {
         Discover a new language through realistic and captivating dialogues with
         AI.
       </p>
-
       <div className="flex flex-row gap-4 pt-4 justify-center">
         <GetStarted />
         <Link
