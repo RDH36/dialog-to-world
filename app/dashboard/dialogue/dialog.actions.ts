@@ -45,10 +45,59 @@ export const getUserDialogues = async (): Promise<UserDialoguesResponse> => {
   };
 };
 
+export const getPublicDialogues = async (): Promise<UserDialoguesResponse> => {
+  const dialogues = await prisma.dialog.findMany({
+    where: {
+      access: "public",
+    },
+    include: {
+      user: true,
+    },
+  });
+
+  if (!dialogues) {
+    return {
+      error: {
+        message: "No dialogues found",
+        status: 404,
+      },
+    };
+  }
+
+  return {
+    dialogues,
+  };
+};
+
 export const getDialog = async (slug: string) => {
   const dialog = await prisma.dialog.findUnique({
     where: {
       id: slug,
+    },
+    include: {
+      user: true,
+    },
+  });
+
+  if (!dialog) {
+    return {
+      error: {
+        message: "No dialog found",
+        status: 404,
+      },
+    };
+  }
+
+  return {
+    dialog,
+  };
+};
+
+export const getPublicDialog = async (slug: string) => {
+  const dialog = await prisma.dialog.findUnique({
+    where: {
+      id: slug,
+      access: "public",
     },
     include: {
       user: true,

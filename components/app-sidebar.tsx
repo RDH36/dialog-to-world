@@ -5,6 +5,7 @@ import {
   MessagesSquare,
   Settings2,
   Sparkles,
+  Telescope,
 } from "lucide-react";
 import * as React from "react";
 
@@ -34,6 +35,12 @@ const data = {
       url: "/dashboard/dialogue",
       path: "/dialogue",
       icon: MessageSquare,
+    },
+    {
+      title: "Explore",
+      url: "/explore",
+      path: "/explore",
+      icon: Telescope,
     },
     {
       title: "Settings",
