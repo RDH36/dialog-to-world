@@ -2,7 +2,9 @@
 
 import { requireAuth } from "@/lib/auth/auth";
 import prisma from "@/lib/prisma/prisma";
+import { revalidatePath } from "next/cache";
 import { Dialogues } from "./dialog.type";
+
 type UserDialoguesResponse = {
   error?: {
     message: string;
@@ -62,6 +64,30 @@ export const getDialog = async (slug: string) => {
     };
   }
 
+  return {
+    dialog,
+  };
+};
+
+export const updateAceess = async (slug: string, access: string) => {
+  const dialog = await prisma.dialog.update({
+    where: {
+      id: slug,
+    },
+    data: {
+      access,
+    },
+  });
+
+  if (!dialog) {
+    return {
+      error: {
+        message: "No dialog found",
+        status: 404,
+      },
+    };
+  }
+  revalidatePath("/dashboard/dialogue");
   return {
     dialog,
   };

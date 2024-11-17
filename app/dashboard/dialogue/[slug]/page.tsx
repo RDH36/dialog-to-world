@@ -19,6 +19,7 @@ export default async function page({ params }: { params: Params }) {
         title={datas.dialog.title}
         imageCover={datas.dialog.imageCover}
         access={datas.dialog.access}
+        slug={slug}
       />
       <DialogInfo
         createdAt={datas.dialog.createdAt}
