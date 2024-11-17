@@ -1,8 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { signInAuth } from "./auth.action";
 
 export default function AuthButton() {
   const [isPending, setIsPending] = useState(false);
@@ -12,7 +12,7 @@ export default function AuthButton() {
         className="bg-primary text-white rounded-sm font-medium"
         onClick={async () => {
           setIsPending(true);
-          await signIn();
+          await signInAuth();
           setIsPending(false);
         }}
       >
