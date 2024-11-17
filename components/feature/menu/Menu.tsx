@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Menu() {
   return (
-    <div className="w-full flex  m-auto py-2 px-4  items-center">
+    <div className="max-w-6xl m-auto py-2 px-4 flex items-center">
       <div>
         <Link href="/" className="flex gap-2 items-center">
           <div className="p-1 rounded-lg  bg-gradient-to-r from-primary to-blue-500">

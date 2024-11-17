@@ -10,7 +10,7 @@ export default async function Home() {
     redirect("/dashboard/create");
   }
   return (
-    <div className="h-full w-full flex flex-col ">
+    <div>
       <Menu />
       <div className="h-full w-full flex flex-col items-center mt-10 gap-5">
         <BetaInfo />
