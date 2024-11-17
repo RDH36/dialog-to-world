@@ -64,7 +64,7 @@ export function DialogueThumbnailCard({
         </div>
         <Link href={url} passHref>
           <Button variant="outline" className="w-full">
-            Let's View
+            Let us View
           </Button>
         </Link>
       </CardContent>
