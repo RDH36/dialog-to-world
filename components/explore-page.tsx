@@ -29,7 +29,7 @@ export function Explore({ dialogues }: exploreDilaogue) {
   return (
     <div className="w-full bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex lg:items-center flex-col sm:flex-row justify-start lg:justify-between mb-8">
           <Link href="/dashboard/dialogue">
             <Button variant="ghost" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />

@@ -12,7 +12,7 @@ export default function HeroBanner() {
         AI.
       </p>
 
-      <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+      <div className="flex flex-row gap-4 pt-4 justify-center">
         <GetStarted />
         <Link
           href="/explore"
