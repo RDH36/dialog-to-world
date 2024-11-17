@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDateFromNow } from "@/lib/dateFormat";
-import { BarChart, Calendar, Globe, Lock, Unlock, User } from "lucide-react";
+import { BarChart, Calendar, Globe, Lock, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -39,11 +39,11 @@ export function DialogueThumbnailCard({
           } text-white`}
         >
           {access === "public" ? (
-            <Unlock className="w-3 h-3 mr-1" />
+            <Globe className="w-3 h-3 mr-1" />
           ) : (
             <Lock className="w-3 h-3 mr-1" />
           )}
-          {access === "public" ? "Public" : "Privé"}
+          {access === "public" ? "Public" : "Private"}
         </Badge>
       </div>
       <CardHeader>
