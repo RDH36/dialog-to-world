@@ -5,9 +5,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDateFromNow } from "@/lib/dateFormat";
-import { BarChart, Calendar, Globe, Lock, User } from "lucide-react";
+import { BarChart, Calendar, Globe, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { BadgeAccess } from "./feature/badge-acces/BadgeAccess";
 
 export function DialogueThumbnailCard({
   access,
@@ -18,7 +19,11 @@ export function DialogueThumbnailCard({
   id,
   user,
   imageCover,
-}: Dialog) {
+  isPublic,
+}: Dialog & { isPublic?: boolean }) {
+  const url = isPublic
+    ? `/explore/dialogue/${id}`
+    : `/dashboard/dialogue/${id}`;
   return (
     <Card className="w-full max-w-sm overflow-hidden">
       <div className="aspect-video relative">
@@ -33,18 +38,7 @@ export function DialogueThumbnailCard({
         <Badge className="absolute bottom-2 left-2 bg-primary text-primary-foreground">
           Dialogue
         </Badge>
-        <Badge
-          className={`absolute top-2 right-2 ${
-            access === "public" ? "bg-green-500" : "bg-yellow-500"
-          } text-white`}
-        >
-          {access === "public" ? (
-            <Globe className="w-3 h-3 mr-1" />
-          ) : (
-            <Lock className="w-3 h-3 mr-1" />
-          )}
-          {access === "public" ? "Public" : "Private"}
-        </Badge>
+        <BadgeAccess access={access} />
       </div>
       <CardHeader>
         <CardTitle className="line-clamp-2">{title}</CardTitle>
@@ -68,7 +62,7 @@ export function DialogueThumbnailCard({
             {level}
           </div>
         </div>
-        <Link href={`/dashboard/dialogue/${id}`} passHref>
+        <Link href={url} passHref>
           <Button variant="outline" className="w-full">
             Let's View
           </Button>

@@ -18,7 +18,7 @@ import { DialogTrigger } from "@radix-ui/react-dialog";
 import { Check, ChevronDown, Copy, Globe, Lock } from "lucide-react";
 import * as React from "react";
 import { toast } from "sonner";
-import { Badge } from "./ui/badge";
+import { BadgeAccess } from "./feature/badge-acces/BadgeAccess";
 
 type ShareModalProps = {
   access: string;
@@ -31,7 +31,9 @@ export function ShareModal({ access, slug }: ShareModalProps) {
   const [copied, setCopied] = React.useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(`http://localhost:3000/eplore/${slug}`);
+    navigator.clipboard.writeText(
+      `http://localhost:3000/explore/dialogue/${slug}`
+    );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -55,18 +57,7 @@ export function ShareModal({ access, slug }: ShareModalProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <Badge
-          className={`absolute top-2 right-2 ${
-            visibility === "public" ? "bg-green-500" : "bg-yellow-500"
-          } text-white`}
-        >
-          {visibility === "public" ? (
-            <Globe className="w-3 h-3 mr-1" />
-          ) : (
-            <Lock className="w-3 h-3 mr-1" />
-          )}
-          {visibility === "public" ? "Public" : "Private"}
-        </Badge>
+        <BadgeAccess access={visibility} />
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
