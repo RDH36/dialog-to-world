@@ -1,5 +1,6 @@
 import { requireAuth } from "@/lib/auth/auth";
 import prisma from "@/lib/prisma/prisma";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { dialogueInputSchema } from "./dialog.schema";
 import { generateDialog } from "./generate-dilaogue";
@@ -53,7 +54,7 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
-
+  revalidatePath("/");
   return NextResponse.json(
     {
       dialog,
