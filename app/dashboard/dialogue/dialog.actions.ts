@@ -136,7 +136,7 @@ export const updateAceess = async (slug: string, access: string) => {
       },
     };
   }
-  revalidatePath("/dashboard/dialogue");
+  revalidatePath("/");
   return {
     dialog,
   };

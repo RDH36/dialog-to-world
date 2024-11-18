@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { getDialog } from "../dialog.actions";
 type Params = Promise<{ slug: string }>;
 
+export const revalidate = 60;
+
 export default async function page({ params }: { params: Params }) {
   const { slug } = await params;
   const datas = await getDialog(slug);

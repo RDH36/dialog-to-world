@@ -15,9 +15,12 @@ export function Explore({ dialogues }: exploreDilaogue) {
   const dialoguesPerPage = 6;
   const totalPages = Math.ceil(dialogues.length / dialoguesPerPage);
 
+  const sortedDialogues = [...dialogues].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
   const indexOfLastDialogue = currentPage * dialoguesPerPage;
   const indexOfFirstDialogue = indexOfLastDialogue - dialoguesPerPage;
-  const currentDialogues = dialogues.slice(
+  const currentDialogues = sortedDialogues.slice(
     indexOfFirstDialogue,
     indexOfLastDialogue
   );
@@ -33,7 +36,7 @@ export function Explore({ dialogues }: exploreDilaogue) {
           <Link href="/dashboard/dialogue">
             <Button variant="ghost" className="flex items-center gap-2">
               <ArrowLeft className="w-4 h-4" />
-              Back to Dashboard
+              Back
             </Button>
           </Link>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
@@ -41,10 +44,18 @@ export function Explore({ dialogues }: exploreDilaogue) {
           </h1>
         </div>
 
-        <div className="flex flex-wrap gap-10 justify-around">
-          {currentDialogues.map((dialogue) => (
-            <DialogueThumbnailCard key={dialogue.id} {...dialogue} isPublic />
-          ))}
+        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+          <div className="px-4 py-6 sm:px-0">
+            <div className="flex flex-wrap gap-6">
+              {currentDialogues.map((dialogue) => (
+                <DialogueThumbnailCard
+                  key={dialogue.id}
+                  {...dialogue}
+                  isPublic
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="flex justify-center items-center mt-8 gap-4">
