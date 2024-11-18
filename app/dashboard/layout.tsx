@@ -4,9 +4,9 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { UnauthorizedPage } from "@/components/unauthorized-page";
 import { requireAuth } from "@/lib/auth/auth";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "DW Dashboard",
@@ -21,7 +21,7 @@ export default async function DashBoardLayout({
   const user = await requireAuth();
 
   if (!user) {
-    return <UnauthorizedPage />;
+    redirect("/");
   }
 
   const userProps = {
