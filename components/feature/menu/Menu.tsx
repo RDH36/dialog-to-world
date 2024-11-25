@@ -1,7 +1,7 @@
 "use client";
 import AuthButton from "@/components/auth/AuthButton";
 import ThemeMode from "@/components/themeMode/ThemeMode";
-import { CircleHelp, MessagesSquare } from "lucide-react";
+import { MessagesSquare } from "lucide-react";
 import Link from "next/link";
 
 export default function Menu() {
@@ -18,10 +18,6 @@ export default function Menu() {
         </Link>
       </div>
       <div className="flex items-center ml-auto gap-3 flex-wrap">
-        <div className=" lg:flex hidden items-center border rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground gap-2 align-baseline">
-          <CircleHelp width={14} height={14} />
-          <p>feedback</p>
-        </div>
         <AuthButton />
         <ThemeMode />
       </div>
