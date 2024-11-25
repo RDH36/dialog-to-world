@@ -23,13 +23,13 @@ export default function Faq() {
           <AccordionTrigger>Which languages are supported?</AccordionTrigger>
           <AccordionContent>
             We currently support major languages including English, Spanish,
-            French, German, and more. We're constantly adding new languages.
+            French, German, and more. Were constantly adding new languages.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>Is DW suitable for beginners?</AccordionTrigger>
           <AccordionContent>
-            Yes! DW adapts to your proficiency level, whether you're a beginner
+            Yes! DW adapts to your proficiency level, whether youre a beginner
             or advanced learner.
           </AccordionContent>
         </AccordionItem>
