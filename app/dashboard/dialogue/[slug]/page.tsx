@@ -1,3 +1,4 @@
+import { AiChatPopover } from "@/components/feature/chat-Ai/ai-chat-popover";
 import DialogInfo from "@/components/feature/dialog-info/DialogInfo";
 import { DialogHeader } from "@/components/feature/header/Header";
 import { LanguageTabs } from "@/components/language-tabs-no-card";
@@ -16,7 +17,7 @@ export default async function page({ params }: { params: Params }) {
   const dialoguedata = JSON.parse(datas.dialog?.content);
   const vocabularyData = JSON.parse(datas.dialog?.vocabulary);
   return (
-    <div>
+    <div className="relative">
       <DialogHeader
         title={datas.dialog.title}
         imageCover={datas.dialog.imageCover}
@@ -33,6 +34,7 @@ export default async function page({ params }: { params: Params }) {
         dialogueData={dialoguedata}
         vocabularyData={vocabularyData}
       />
+      <AiChatPopover />
     </div>
   );
 }

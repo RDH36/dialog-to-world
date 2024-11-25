@@ -32,7 +32,7 @@ export function ShareModal({ access, slug }: ShareModalProps) {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(
-      `http://localhost:3000/explore/dialogue/${slug}`
+      `https://www.dialogtoworld.com/explore/dialogue/${slug}`
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
