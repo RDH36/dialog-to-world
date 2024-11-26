@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-import Link from "next/link";
-
 export default function Cta() {
   return (
     <section className="container mx-auto px-4 py-24">
