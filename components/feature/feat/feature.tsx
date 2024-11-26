@@ -4,6 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
 import { Bot, Brain, Languages } from "lucide-react";
 
 export function Feature() {
