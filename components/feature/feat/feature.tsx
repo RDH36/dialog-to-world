@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Brain, Headphones, Languages } from "lucide-react";
+import { Bot, Brain, Languages } from "lucide-react";
 
 export function Feature() {
   return (
@@ -31,10 +31,10 @@ export function Feature() {
         </Card>
         <Card className="bg-gray-100 dark:bg-gray-800">
           <CardHeader>
-            <Headphones className="mb-2 h-8 w-8 text-purple-500" />
-            <CardTitle>Voice Interaction</CardTitle>
+            <Bot className="mb-2 h-8 w-8 text-purple-500" />
+            <CardTitle>Ai assistant</CardTitle>
             <CardDescription>
-              Practice speaking and listening in real-time
+              Get instant feedback and improve your language skills
             </CardDescription>
           </CardHeader>
         </Card>
