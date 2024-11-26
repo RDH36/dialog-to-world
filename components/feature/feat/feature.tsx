@@ -36,7 +36,6 @@ export function Feature() {
             <CardTitle>Ai assistant</CardTitle>
             <CardDescription>
               Get instant feedback and improve your language skills
-
             </CardDescription>
           </CardHeader>
         </Card>
