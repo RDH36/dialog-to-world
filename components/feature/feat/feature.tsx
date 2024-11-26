@@ -4,6 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
 import { Bot, Brain, Languages } from "lucide-react";
 
 export function Feature() {
@@ -35,6 +36,7 @@ export function Feature() {
             <CardTitle>Ai assistant</CardTitle>
             <CardDescription>
               Get instant feedback and improve your language skills
+
             </CardDescription>
           </CardHeader>
         </Card>
