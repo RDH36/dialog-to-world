@@ -41,14 +41,14 @@ export function ShareModal({ access, slug }: ShareModalProps) {
   const handleVisibility = async (access: string) => {
     const update = await updateAceess(slug, access);
     if (update.error) {
-      toast("An error occured, please try again", {
+      toast.error("An error occured, please try again", {
         description: update.error.message,
         position: "top-center",
         className: "bg-red-500",
       });
     }
     if (update.dialog) setVisibility(update.dialog.access);
-    toast("Acces has updated", {
+    toast.success("Acces has updated", {
       position: "top-center",
       className: "bg-green-500",
     });
