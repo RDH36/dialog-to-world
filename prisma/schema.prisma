@@ -16,6 +16,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   dialogs       Dialog[]
+  feedbacks     Feedback[]
 }
 
 model Account {
@@ -67,6 +68,16 @@ model Dialog {
   createdAt    DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Feedback {
+  id           String   @id @default(cuid())
+  userId       String
+  message      String
+  type         String
+  createdAt    DateTime @default(now())
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum Level {

@@ -3,6 +3,7 @@
 import {
   MessageSquare,
   MessagesSquare,
+  Send,
   Settings2,
   Sparkles,
   Telescope,
@@ -20,6 +21,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { NavSecondary } from "./nav-secondary";
 
 const data = {
   navMain: [
@@ -67,6 +69,13 @@ const data = {
       ],
     },
   ],
+  navSecondary: [
+    {
+      title: "Feedback",
+      url: "#",
+      icon: Send,
+    },
+  ],
 };
 
 export type AppSidebarProps = {
@@ -111,6 +120,7 @@ export function AppSidebar({
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
+        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={user} />
