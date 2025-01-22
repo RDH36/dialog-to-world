@@ -4,7 +4,6 @@ import {
   MessageSquare,
   MessagesSquare,
   Send,
-  Settings2,
   Sparkles,
   Telescope,
 } from "lucide-react";
@@ -43,30 +42,6 @@ const data = {
       url: "/explore",
       path: "/explore",
       icon: Telescope,
-    },
-    {
-      title: "Settings",
-      url: "#",
-      path: "/settings",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
     },
   ],
   navSecondary: [
